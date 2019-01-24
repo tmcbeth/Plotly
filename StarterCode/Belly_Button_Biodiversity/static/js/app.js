@@ -57,15 +57,16 @@ function buildCharts(sample) {
   d3.json(chartUrl).then(function (response) {
 
     console.log("pulled data for pie chart:",response);
-  
+    
+    
     var sample_values = response.sample_values;
     var otu_ids = response.otu_ids;
     var otu_labels = response.otu_labels;
 
 
-    console.log("sample_values", sample_values);
-    console.log("sample_values", otu_ids);
-    console.log("sample_values", otu_labels);
+    // console.log("sample_values", sample_values);
+    // console.log("sample_values", otu_ids);
+    // console.log("sample_values", otu_labels);
 
     // @TODO: Build a Pie Chart
 
@@ -87,6 +88,58 @@ function buildCharts(sample) {
     Plotly.newPlot('pie', pieData, layout);
     // HINT: You will need to use slice() to grab the top 10 sample_values,
     // otu_ids, and labels (10 each).
+
+
+    // BUBBLE CHART
+
+    var trace1 = {
+      x: otu_ids,
+      y: sample_values,
+      mode: 'markers',
+      marker: {
+        colorscale: [[0, 'rgb(0, 0, 0)'],
+        [0.1, 'rgb(10, 10, 10)'],
+        [0.2, 'rgb(20, 20, 20)'],
+        [0.3, 'rgb(40, 40, 40)'],
+
+
+        [0.4, 'rgb(60, 60, 60)'],
+
+
+        [0.5, 'rgb(80, 80, 80)'],
+
+   
+        [0.6, 'rgb(100, 100, 100)'],
+
+
+        [0.7, 'rgb(120, 120, 120)'],
+
+    
+        [0.8, 'rgb(140, 140, 140)'],
+
+
+        [0.9, 'rgb(160, 160, 160)'],
+
+
+        [1.0, 'rgb(180, 180, 180)']],
+        opacity: [0.6],
+        size: sample_values
+      }
+    };
+    
+    var data = [trace1];
+    
+    var layout = {
+      title: '',
+      showlegend: false,
+      height: 600,
+      width: 1200
+    };
+    
+    Plotly.newPlot('bubble', data, layout);
+
+
+
   });
 }
 

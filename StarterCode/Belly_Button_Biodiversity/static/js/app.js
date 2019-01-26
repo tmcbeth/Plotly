@@ -96,32 +96,9 @@ function buildCharts(sample) {
       x: otu_ids,
       y: sample_values,
       mode: 'markers',
+      text: otu_labels,
       marker: {
-        colorscale: [[0, 'rgb(0, 0, 0)'],
-        [0.1, 'rgb(10, 10, 10)'],
-        [0.2, 'rgb(20, 20, 20)'],
-        [0.3, 'rgb(40, 40, 40)'],
-
-
-        [0.4, 'rgb(60, 60, 60)'],
-
-
-        [0.5, 'rgb(80, 80, 80)'],
-
-   
-        [0.6, 'rgb(100, 100, 100)'],
-
-
-        [0.7, 'rgb(120, 120, 120)'],
-
-    
-        [0.8, 'rgb(140, 140, 140)'],
-
-
-        [0.9, 'rgb(160, 160, 160)'],
-
-
-        [1.0, 'rgb(180, 180, 180)']],
+        color: "red",
         opacity: [0.6],
         size: sample_values
       }

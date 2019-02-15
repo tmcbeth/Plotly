@@ -116,6 +116,79 @@ function buildCharts(sample) {
     Plotly.newPlot('bubble', data, layout);
 
 
+    // Gauge Chart
+
+    // Enter a speed between 0 and 180
+    var level = 2;
+    
+
+// Trig to calc meter point
+    var degrees = 180 - level,
+     radius = .5;
+    var radians = degrees * Math.PI / 180;
+    var x = radius * Math.cos(radians);
+    var y = radius * Math.sin(radians);
+    
+
+// Path: may have to change to create a better triangle
+var mainPath = 'M -.0 -0.025 L .0 0.025 L ',
+     pathX = String(x),
+     space = ' ',
+     pathY = String(y),
+     pathEnd = ' Z';
+var path = mainPath.concat(pathX,space,pathY,pathEnd);
+
+var data = [{ type: 'scatter',
+   x: [0], y:[0],
+    marker: {size: 28, color:'850000'},
+    showlegend: false,
+    name: 'Scrubs per Week',
+    text: level,
+    hoverinfo: 'text+name'},
+  { values: [50/9, 50/9, 50/9, 50/9, 50/9, 50/9,50/9,50/9,50/9, 50],
+  rotation: 90,
+  text: ['8-9', '7-8', '6-7', '5-6',
+            '4-5', '3-4', '2-3','1-2','0-1',''],
+  textinfo: 'text',
+  textposition:'inside',
+  marker: {colors:['rgba(0,69,41,.5)', 'rgba(0,104,55, .5)',
+                         'rgba(35,132,67, .5)', 'rgba(65,171,93, .5)',
+                         'rgba(120,198,121, .5)', 'rgba(173,221,142, .5)',
+                         'rgba(217,240,163, .5)','rgba(247,252,185, .5)','rgba(255,255,229, .5)','rgba(255, 255, 255, 0)']},
+  labels: ['151-180', '121-150', '91-120', '61-90', '31-60', '0-30', ''],
+  hoverinfo: 'label',
+  hole: .5,
+  type: 'pie',
+  showlegend: false
+}];
+
+var layout = {
+  shapes:[{
+      type: 'path',
+      path: path,
+      fillcolor: '850000',
+      line: {
+        color: '850000'
+      }
+    }],
+  title: 'Gauge',
+  Speed: '0-100',
+  height: 1000,
+  width: 1000,
+  xaxis: {zeroline:false, showticklabels:false,
+             showgrid: false, range: [-1, 1]},
+  yaxis: {zeroline:false, showticklabels:false,
+             showgrid: false, range: [-1, 1]}
+};
+
+Plotly.newPlot('gauge', data, layout);
+
+
+
+
+
+
+
 
   });
 }

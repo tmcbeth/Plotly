@@ -4,7 +4,7 @@ cffi==1.11.5
 chardet==3.0.4
 Click==7.0
 configparser==3.5.0
-cryptography==2.4.1
+cryptography==3.2
 decorator==4.3.0
 Flask==1.0.2
 Flask-Compress==1.4.0
